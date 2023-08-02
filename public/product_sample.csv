@@ -1,0 +1,5 @@
+Name,Tax,Sku,Offer Price,Regular Price,Product Type,Is Featured,Short Description,Product Long Description,Meta Title,Meta Description,Status,Category,Group name
+Product  1,Taxable,C300990,24.6,32.5,Simple,Yes,dummy text,,Product 1,Product 1 description,Publish,"Refrigerator And Freezer, Fridges and Freezers",
+Product  2,None,C300966,12,62.5,Group,No,test,,Product 2,test,Publish,"Lab Supply,Glassware,Hematology",
+Product  3,Taxable,7677C58,21,36,Simple,No,test,,Test,Test,Unpublish,"Lab Supply, Test Category",Product  2
+,,,,,,,,,,,,,

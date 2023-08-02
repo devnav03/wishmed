@@ -1,0 +1,27 @@
+/* CSS Document */
+.simpleLens-thumbnails-container a{
+	 height: 50px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.simpleLens-thumbnails-container a .crop {height: 100%;
+  overflow: hidden;
+  position: relative;
+  border:solid 1px #e2e2e2;
+}
+
+.simpleLens-thumbnails-container a img{
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+
+}
+.simpleLens-thumbnails-container{
+	margin-top: 10px;
+}
