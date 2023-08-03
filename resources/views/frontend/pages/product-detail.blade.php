@@ -61,9 +61,10 @@
             @else  
          
                 <div class="main-prod prod-img">
-                    <span id="img_ft_zoom" class="hide_phone">
+                  <!--   <span id="img_ft_zoom" class="hide_phone">
                     <img class="mn-img img-fluid mx-auto d-block" src="{!! asset($product->featured_image) !!}" alt="">
-                    </span>
+                    </span> -->
+                    <img class="img-fluid mx-auto d-block" src="{!! asset($product->featured_image) !!}" alt="">
                 </div>
             @endif 
 
@@ -201,8 +202,8 @@ if(\Auth::check()){
         <li class="nav-item description_tab active" id="tab-title-description" role="tab" aria-controls="tab-description">
         <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="medical-equipment" aria-selected="false" href="#tab-description">Description</a>
         </li>
-        <li class="nav-item reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="medical-equipment" aria-selected="false" href="#tab-reviews">Reviews (1) </a>
-        </li>
+      <!--   <li class="nav-item reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews"><a class="nav-link" data-toggle="tab" role="tab" aria-controls="medical-equipment" aria-selected="false" href="#tab-reviews">Reviews (1) </a>
+        </li> -->
       </ul>
     </div>
 <div class="prod_des panel entry-content wc-tab active" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">      

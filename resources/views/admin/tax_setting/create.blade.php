@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"> 
-                                            <label for="product_tax" style="font-size: 16px; margin-bottom: 5px;">Product Tax Amount<span>*</span></label>
+                                            <label for="product_tax" style="font-size: 16px; margin-bottom: 5px;">Product Tax %<span>*</span></label>
                                             {!! Form::number('product_tax', null, array('class' => 'form-control')) !!}
                                             @if ($errors->has('product_tax'))
                                              <span class="text-danger">{{$errors->first('product_tax')}}</span>
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group"> 
-                                            <label for="shipping_tax" style="font-size: 16px; margin-bottom: 5px;">Shipping Tax Amount<span>*</span></label>
+                                            <label for="shipping_tax" style="font-size: 16px; margin-bottom: 5px;">Shipping Tax %<span>*</span></label>
                                             {!! Form::number('shipping_tax', null, array('class' => 'form-control')) !!}
                                             @if ($errors->has('shipping_tax'))
                                              <span class="text-danger">{{$errors->first('shipping_tax')}}</span>

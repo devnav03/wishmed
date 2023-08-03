@@ -9,10 +9,10 @@
 	<p>Wishmed was established in March 2010 in Australia as a technical consultancy to support Lab equipment installations and repairs. In Feb 2011, we took steps to come in Medical and Laboratory supply field after finding unregulated priced product in the market.</p>
 	</div>
 	<div class="footer-icon">
-	<a href="http://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+	<a href="https://www.facebook.com/wishmedptyltd" target="_blank"><i class="fab fa-facebook-f"></i></a>
 	<a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-	<a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-	<a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+	<a href="https://www.instagram.com/wishmedptyltd/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+	<a href="https://www.youtube.com/channel/UCCAwH_aIW57zvNsrqy4axrA" target="_blank"><i class="fab fa-youtube"></i></a>
 	</div>
 	</div>								
 </div>
@@ -24,7 +24,7 @@
 		<ul id="menu-useful-links" class="menu">
 			<li><a href="{{ route('home') }}">Home</a></li>
 			<li><a href="{{ route('about-us') }}">About Us</a></li>
-			<li><a href="#">Blogs</a></li>
+			<li><a href="{{ route('blogs_page') }}">Blogs</a></li>
 			<li><a href="{{ route('contact') }}">Contact Us</a></li>
 			<li><a href="{{ route('terms-and-conditions') }}">Terms & Conditions</a></li>
 			<li><a href="{{ route('refund-and-return') }}">Return & Cancellation Policy</a></li>

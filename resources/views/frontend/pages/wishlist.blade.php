@@ -25,9 +25,6 @@
                           <th>
                             <p class="mb-0" style="text-align: left;">Name</p>
                           </th>
-                          <th>
-                            <p class="mb-0">Total</p>
-                          </th>
                           <th style="">
                             <p class="mb-0">Action</p>
                           </th>
@@ -44,9 +41,7 @@
                           <td class="text-left" style="vertical-align: middle; border-left: 1px solid #EAEAEA;">
                             <h6 class="mb-0" style="font-family: 'Poppins', sans-serif;color: #5B5B5B;font-size: 16px;text-align: left;">{{ $wishlist_product->name }}</h6>
                           </td>
-                          <td style="vertical-align: middle; border-left: 1px solid #EAEAEA;">
-                            <p class="mb-0"><i class="fa fa-dollar"></i>{{ $wishlist_product->offer_price }}</p>
-                          </td>
+                      
                           <td style="vertical-align: middle; border-left: 1px solid #EAEAEA;">
                             @if($wishlist_product->quantity != 0) 
                             <button class="move_to_cart" onclick="addToCart(this.value)" value="{{ $wishlist_product->id }}">Add To Cart</button>  

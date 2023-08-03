@@ -29,6 +29,8 @@ use App\Models\Form;
 use App\Models\Feedback;
 use App\Models\SpecialPrice;
 use App\Models\Blog;
+use App\Models\BlogCategory;
+use App\Models\Supplier;
 use App\User;
 use Ixudra\Curl\Facades\Curl;
 use App\Models\Faqs;
@@ -62,7 +64,6 @@ class HomeController extends Controller{
 
     public function save_cart(Request $request){
       try {
-
         $user_id = ''; 
         if(Auth::id()){
           $user_id =  Auth::id();
@@ -81,29 +82,22 @@ class HomeController extends Controller{
                       ->update([
                       'quantity' =>  $total_unit,
                   ]);
-
                 } else {
-
                   Cart::create([
                     'product_id' => $product_id,
                     'quantity'   => $request->quantity[$product_id],
                     'user_id'    => $user_id,
                   ]);
-
                 }
-
               } else {
-
                 $cart = Cart::where('session_id', $request['session_id'])->where('product_id', $product_id)->first();
                 if($cart) {
                   $total_unit = $cart->quantity + $request->quantity[$product_id];
                   Cart::where('id', $cart->id)
                       ->update([
-                      'quantity' =>  $total_unit,
+                      'quantity' => $total_unit,
                   ]);
-
                 } else {
-
                   Cart::create([
                     'product_id'    => $product_id,
                     'quantity' => $request->quantity[$product_id],
@@ -114,7 +108,6 @@ class HomeController extends Controller{
             }
           }
         } 
-
         if($limit == 0){
           return back()->with('not_added_in_cart', 'not_added_in_cart');
         } else {
@@ -142,10 +135,40 @@ class HomeController extends Controller{
         return view('frontend.pages.forms_page', compact('forms'));
     }
 
+
     public function blogs_details($url){
+      $blog = Blog::where('url', $url)->where('status', 1)->select('title', 'description', 'image', 'category_id', 'id')->first(); 
+      if (!$blog) {
+        abort(401);
+      }
+      $BlogCategory = BlogCategory::where('id', $blog->category_id)->first();
+      $keyword = Blog::where('url', $url)->select('meta_title', 'meta_description')->first(); 
 
-       
+      $latest_blogs = Blog::where('status', 1)->where('id', '!=', $blog->id)->select('title', 'url', 'image')->paginate(5);
 
+      return view('frontend.pages.blog_detail', compact('blog', 'keyword', 'BlogCategory', 'latest_blogs'));
+    }
+
+
+    public function blog_category($url = null){
+
+      $BlogCategory = BlogCategory::where('url', $url)->first();
+
+      $blogs = Blog::join('blog_categories', 'blog_categories.id', '=', 'blogs.category_id')
+      ->select('blogs.url', 'blogs.title', 'blogs.image', 'blogs.created_at', 'blog_categories.name', 'blogs.meta_description')
+      ->where('blogs.status', 1)->where('blogs.category_id', $BlogCategory->id)->orderBy('blogs.id', 'DESC')->get();
+
+      return view('frontend.pages.category_blog', compact('blogs', 'BlogCategory'));
+    }
+
+
+    public function blogs_page(){
+
+      $blogs = Blog::join('blog_categories', 'blog_categories.id', '=', 'blogs.category_id')
+      ->select('blogs.url', 'blogs.title', 'blogs.image', 'blogs.created_at', 'blog_categories.name', 'blogs.meta_description')
+      ->where('blogs.status', 1)->orderBy('blogs.id', 'DESC')->get();
+
+      return view('frontend.pages.blogs', compact('blogs'));
     }
 
 
@@ -169,9 +192,11 @@ class HomeController extends Controller{
       $blogs = Blog::join('blog_categories', 'blog_categories.id', '=', 'blogs.category_id')
       ->select('blogs.url', 'blogs.title', 'blogs.image', 'blogs.created_at', 'blog_categories.name', 'blogs.meta_description')
       ->where('blogs.status', 1)->orderBy('blogs.id', 'DESC')->paginate(3);
+
+      $suppliers = Supplier::where('status', 1)->select('image')->get();
       
 
-      return view('frontend.home', compact('feature_products', 'medicals', 'dentals', 'labs', 'feedbacks', 'blogs'));
+      return view('frontend.home', compact('feature_products', 'medicals', 'dentals', 'labs', 'feedbacks', 'blogs', 'suppliers'));
     } catch (\Exception $exception) {
      //dd($exception);
             return back();
@@ -565,8 +590,9 @@ public function contact(){
    try{
        
     $contact = ContentManagement::where('id', 1)->select('contact')->first();
-
-    return view('frontend.pages.contact', compact('contact'));
+    $two = mt_rand(1,9); 
+    $three = mt_rand(100,999);
+    return view('frontend.pages.contact', compact('contact', 'two', 'three'));
 
    } catch(Exception $exception) {
         //dd($exception);
@@ -585,14 +611,45 @@ public function contactEnquiry(Request $request){
         } 
  
         (new Contact)->store($inputs);
-        $email = $inputs['email'];
-        $data['mail_data'] = $inputs;
+
+        $email = $request->email;
+        $first_name = $request->first_name;
+        $last_name  =  $request->last_name;
+        $phone      = $request->phone;
+        $subject = $request->subject;
+        $message = $request->message;
+        $sent_to = "navjot@samtechinnovations.com";
+        $date = date('d M Y');
+        $email_subject = "Enquiry from wishmed Web ".$date;
+
+        $postdata = http_build_query(
+          array(
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'phone' => $phone,
+            'email' => $email,
+            'subject' => $subject,
+            'message' => $message,
+            'sent_to' => $sent_to,
+            'email_subject' => $email_subject,
+          )
+        );
+        $opts = array('http' =>
+          array(
+            'method'  => 'POST',
+            'header'  => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => $postdata
+          )
+        );
+
+        $context  = stream_context_create($opts);
+        $result = file_get_contents('https://sspl20.com/email-api/api/wishmed-enquire', false, $context);
          
-        \Mail::send('email.enquiry', $data, function($message) use ($email){
-            $message->from($email);
-            $message->to('test@test.com');
-            $message->subject('Enquiry');
-        });
+        // \Mail::send('email.enquiry', $data, function($message) use ($email){
+        //     $message->from($email);
+        //     $message->to('test@test.com');
+        //     $message->subject('Enquiry');
+        // });
 
         return back()->with('enquiry_sub', lang('messages.created', lang('comment_sub')));
 
@@ -663,7 +720,7 @@ public function terms_and_conditions(){
   
     public function refund_return(){
     try {
-          $refund_return = ContentManagement::where('id', 1)->select('refund_return')->first(); 
+          $refund_return = ContentManagement::where('id', 1)->select('privacy as refund_return')->first(); 
           return view('frontend.pages.refund_return', compact('refund_return'));
         }
         catch (\Exception $exception) {

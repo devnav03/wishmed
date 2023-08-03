@@ -15,8 +15,8 @@
 						<p data-animation="fadeInUp" data-delay=".6s">Quis autem vel eum iure reprehenin voluptate velit esse quam nihil molestiae conse</p></div>
 					    <div class="hero-slider-btn">
 							<a data-animation="fadeInUp" data-delay=".8s" href="#" class="c-btn">shop now <i class="fa-solid fa-plus"></i></a>
-							 <div class="b-button" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;"><a href="#">hot collection <i class="fa-solid fa-plus"></i></a>
-							 </div>
+							<!--  <div class="b-button" data-animation="fadeInUp" data-delay="1s" style="animation-delay: 1s;"><a href="#">hot collection <i class="fa-solid fa-plus"></i></a>
+							 </div> -->
 						</div>
 					</div>
 			    </div>
@@ -71,7 +71,7 @@
 				<div class="banner-img pos-rel">
 					<a href="#">
 						<img decoding="async" src="{!! asset('assets/frontend/images/01-banner.jpg') !!}" alt="banner1"></a>
-						<div class="banner-text"><span>Super Sale</span>
+						<div class="banner-text">
 							<h2>New Collection</h2>
 						<div class="b-button red-b-button">
 							<a href="#">Shop Now <i class="fa-solid fa-plus"></i></a>
@@ -84,7 +84,7 @@
 				<div class="banner-img pos-rel">
 					<a href="#">
 						<img decoding="async" src="{!! asset('assets/frontend/images/02-banner.jpg') !!}" alt="banner1"></a>
-						<div class="banner-text"><span>Gun Covid -19</span>
+						<div class="banner-text">
 							<h2>Temperature</h2>
 							<div class="b-button red-b-button">
 								<a href="#">Shop Now <i class="fa-solid fa-plus"></i></a>
@@ -97,7 +97,7 @@
 				<div class="banner-img pos-rel">
 				<a href="#">
 					<img decoding="async" src="{!! asset('assets/frontend/images/03-banner.jpg') !!}" alt="banner1"></a>
-				<div class="banner-text"><span>Pulse</span><h2>Oximeter</h2>
+				<div class="banner-text"><h2>Oximeter</h2>
 					<div class="b-button red-b-button">
 						<a href="#">Shop Now <i class="fa-solid fa-plus"></i></a>
 					</div>
@@ -425,7 +425,6 @@ $group_price = get_group_price($medical->id);
 <section class="featured-tab">								
 	<div class="container">		
 		<div class="product-area klb-product pb-70">
-			<div class="container">
 		<div class="row mb-30">
 			<div class="col-xl-7 col-lg-7 col-md-7">
 				<div class="section-title mb-30">
@@ -433,11 +432,11 @@ $group_price = get_group_price($medical->id);
 					<p>Sed ut perspiciatis unde omnis iste natus error</p>
 				</div>
 			</div>
-			<div class="col-xl-5 col-lg-5 col-md-5">
+		<!-- 	<div class="col-xl-5 col-lg-5 col-md-5">
 				<div class="b-button shop-btn s-btn text-md-right mb-30">
 				    <a href="#">View All Products <i class="fa-solid fa-arrow-right"></i></a>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 <div class="row">
@@ -496,7 +495,6 @@ $group_price = get_group_price($feature_product->id);
 </div>
 </div>
 </div>		
-</div>
 </section>
 
 <section class="elementor-section">		
@@ -552,15 +550,14 @@ $group_price = get_group_price($feature_product->id);
 							</div>
 						</div>
 						</div>
-			    <div class="row">
-
+	<div class="row">
     @if($blogs)
     @foreach($blogs as $blog)
 	    <div class="col-xl-4 col-lg-4 col-md-6">
 			<div class="blog-wrapper mb-30">
 				<div class="blog-img pos-rel">
 				<a href="{{ route('blogs-details', $blog->url) }}">
-					<img decoding="async" src="{!! asset($blog->image) !!}" alt="blog_small_img1"></a><span class="blog-tag color-1">{{ $blog->name }}</span></div>
+				<img decoding="async" src="{!! asset($blog->image) !!}" alt="blog_small_img1"></a><span class="blog-tag color-1">{{ $blog->name }}</span></div>
 			<div class="blog-text">
 				<div class="blog-meta">
 					<span><i class="fa-solid fa-calendar"></i>
@@ -588,42 +585,11 @@ $group_price = get_group_price($feature_product->id);
 <section class="client-logo">
 	<div class="container">
 		<div class="row">	
+        @foreach($suppliers as $supplier)
 			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/01-2.png') !!}" alt="blog_small_img1"></a>
+                <a href="#"><img decoding="async" src="{!! asset($supplier->image) !!}" alt="blog_small_img1"></a>
 			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/02-1.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/03.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/04.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/05.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/06.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/07.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/08.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/09.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/10.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/11.png') !!}" alt="blog_small_img1"></a>
-			</div>
-			<div class="col-md-2">	
-                <a href="#"><img decoding="async" src="{!! asset('assets/frontend/images/12.png') !!}" alt="blog_small_img1"></a>
-			</div>
+        @endforeach
         </div>
 	</div>
 </section>

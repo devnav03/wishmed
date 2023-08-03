@@ -17,7 +17,7 @@
                         <div class="shop-menu">
                         <ul id="menu-top-right" class="header_right">
                             @if(\Auth::check())
-                            <li class="menu-item"><a href="{{ route('log-in') }}"><i class="fa-solid fa-user"></i>{{ \Auth::user()->name }}</a>
+                            <li class="menu-item"><a href="#"><i class="fa-solid fa-user"></i>{{ \Auth::user()->name }}</a>
                             <ul class="header_sub-menu">
                                 <li><a href="{{ route('my-profile') }}">My Profile</a></li>
                                 <li><a href="{{ route('wishlist')}}">Wishlist</a></li>
@@ -27,11 +27,11 @@
                             </ul>
                             </li>
 
-                                    @else
-                                    <li class="menu-item"><a href="{{ route('log-in') }}"><i class="fa-solid fa-lock"></i>Sign In</a></li>
-                                    @endif
+                        @else
+                            <li class="menu-item"><a href="{{ route('log-in') }}"><i class="fa-solid fa-lock"></i>Sign In</a></li>
+                        @endif
                    
-                                    <li class="menu-item"><a href="{{ route('wishlist') }}"><i class="fa-solid fa-heart"></i>Wishlist</a></li>
+                            <li class="menu-item"><a href="{{ route('wishlist') }}"><i class="fa-solid fa-heart"></i>Wishlist</a></li>
                                 </ul>                              
                             </div>
                         </div>
@@ -39,7 +39,7 @@
         </div>
         </div>
     </div>
-@php  $ip = $_SERVER['HTTP_USER_AGENT']; @endphp                    
+    @php $ip = $_SERVER['HTTP_USER_AGENT']; @endphp                    
         <div id="sticky-header" class="main-menu-area menu-01 pl-165 pr-165">
         <div class="container-fluid">
         <div class="row align-items-center">
@@ -91,30 +91,28 @@
 <li class="dropdown  menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('shop') }}">Shop</a>
 </li>
 <li class="dropdown"><a href="#">Categories</a>
-
 <ul class="sub-menu text-left">
 @php
 $par_cats = get_par_cat();
 @endphp
     @foreach($par_cats as $par_cat)
     <li><a href="{{ route('categoryDetail', $par_cat->url) }}">{{ $par_cat->name }}</a>
-
-    @php
-              $subcats = get_sub_cat($par_cat->id);
+            @php
+            $subcats = get_sub_cat($par_cat->id);
             @endphp
             @if($subcats)
             <ul>
               @foreach($subcats as $subcat) 
-                <li> <a href="{{ route('categoryDetail', $subcat->url) }}"> {{ $subcat->name}}</a> 
+                <li><a href="{{ route('categoryDetail', $subcat->url) }}"> {{ $subcat->name}}</a> 
 
                  @php
               $subcats = get_sub_cat($subcat->id);
             @endphp
             @if($subcats)
             <ul>
-              @foreach($subcats as $subcat) 
-                <li><a href="{{ route('categoryDetail', $subcat->url) }}"> {{ $subcat->name}}</a></li>
-              @endforeach
+            @foreach($subcats as $subcat) 
+            <li><a href="{{ route('categoryDetail', $subcat->url) }}"> {{ $subcat->name}}</a></li>
+            @endforeach
             </ul>
             @endif
                 </li>
@@ -125,12 +123,10 @@ $par_cats = get_par_cat();
     @endforeach
 </ul>
 
-
-
 </li>
 
 
-<li class="dropdown  menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="#">Blog</a>
+<li class="dropdown  menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="{{ route('blogs_page') }}">Blog</a>
 <!-- <ul class="sub-menu text-left">
     <li class=" menu-item menu-item-type-post_type menu-item-object-page"><a href="#">Blog Standart</a></li>
     <li class=" menu-item menu-item-type-post_type menu-item-object-post"><a href="#">Blog Detail</a></li>
@@ -144,7 +140,7 @@ $par_cats = get_par_cat();
     <li class=" menu-item menu-item-type-custom menu-item-object-custom"><a href="#">404 Error Page</a></li>
 </ul>
 </li> -->
-<li class=" menu-item menu-item-type-post_type menu-item-object-page"><a href="#">Contact Us</a></li>
+<li class=" menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('contact') }}">Contact Us</a></li>
 </ul>                           </nav>
                         </div>
                     </div>
@@ -170,34 +166,76 @@ $par_cats = get_par_cat();
             <div class="side-info mb-30">
                 <div class="contact-list mb-30">
                     <h4>Office Address</h4>
-                    <p>123/A, Miranda City Likaoli Prikano, Dope</p>
+                    <p>Unit 2, 22-24 Steel Street, Blacktown, NSW 2148</p>
+                </div>
+                <div class="contact-list mb-30">
+                    <h4>Brisbane Office</h4>
+                    <p>Unit 11, 42 Smith Street, Capalaba 4157</p>
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Phone Number</h4>
-                    <p>+ 012 345 678 99<br>+ 457 789 789 65</p>
+                    <p>+61 2 8678 0983<br>+61 2 8678 0993</p>
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Email Address</h4>
-                    <p>support@gmail.com<br> contact@medibazar.net</p>
+                    <p>sales@wishmed.com.au</p>
                 </div>
             </div>
         </div>
             <div class="sidebar-modal-widget widget_social_list">     
                 <div class="social-icon-right mt-20">
-                    <a href="http://www.facebook.com/" target="_blank">
+                    <a href="https://www.facebook.com/wishmedptyltd" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     <a href="https://twitter.com/" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="https://www.instagram.com/wishmedptyltd/?hl=en" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.linkedin.com/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
+                    <a href="https://www.youtube.com/channel/UCCAwH_aIW57zvNsrqy4axrA" target="_blank">
+                        <i class="fab fa-youtube"></i>
                     </a>
                 </div>
             </div>         
         </div>
     <div class="sidebar-overlay"></div>
     </header>
+
+    <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <ul>
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('about-us') }}">About US</a></li>
+        <li><a href="{{ route('shop') }}">Shop</a> </li>
+        <li><a href="{{ route('blogs_page') }}">Blogs</a></li>
+        <li><a href="{{ route('contact') }}">Contact Us</a></li>
+    </ul>
+</div>
+<a onclick="openNav()" class="openNav">
+    <span></span>
+    <span></span>
+    <span></span>
+</a>
+        
+        <div class="top-cart-row phone_cart">
+            <div class="dropdown dropdown-cart"> 
+                <a href="{{ route('cartDetail') }}" class="lnk-cart">
+                <div class="items-cart-inner">
+                <div class="basket"> <i class="fa-solid fa-cart-shopping"></i> </div>
+                <div class="basket-item-count">   
+                    <span class="cart-count"> @if(\Auth::check()) {{ user_cart_count(\Auth::user()->id) }} @else {{ cart_count($ip) }} @endif </span>
+                </div>
+                </div>
+                </a>
+            </div>
+        </div>
+  
+<div class="header-search phone_search">
+    <form class="header-search-form" id="labnol" method="get" action="{{ route('search_product')}}">
+        <input type="text" name="q" id="transcript" autocomplete="off" @if(isset($search_key)) value="{{ $search_key }}" @endif class="main-search" placeholder="Search">
+        <ul id="total_records1"></ul>
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="hidden" name="post_type" value="product">
+    </form>
+</div>  

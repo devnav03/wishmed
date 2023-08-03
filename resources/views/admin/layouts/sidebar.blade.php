@@ -179,6 +179,10 @@
                 <li><a class="subnav-text" href="{!! route('blog-category.index') !!}">Category List</a></li>
             </ul>
         </li>
+
+        <li class="has-subnav"> 
+            <a href="{!! route('suppliers.index') !!}"><i class="fa fa-pen" aria-hidden="true"></i><span class="nav-text">Suppliers</span></a>
+        </li>
         
         <li class="has-subnav">
             <a href="{!! route('fedbacks.index') !!}"><i class="fa fa-star" aria-hidden="true"></i><span class="nav-text">Customer's Feedbacks</span></a>

@@ -34,7 +34,7 @@ bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"> 
-                                            {!! Form::label('file', lang('Excel File'), array('class' => '')) !!}
+                                            {!! Form::label('file', lang('Zip File (folder name should be featured_images)'), array('class' => '')) !!}
                                            {!! Form::file('image', array('class' => 'form-control', 'required' => 'true')) !!}
                                         </div> 
                                     </div> 

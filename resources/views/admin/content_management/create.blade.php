@@ -8,7 +8,6 @@
 //<![CDATA[
 bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 //]]>
-
 </script>
 
 @stop
@@ -43,7 +42,7 @@ bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
                                     </div>
                                     <div class="col-md-12 mgn20">
                                         <div class="form-group"> 
-                                            <label for="privacy" style="font-size: 16px; margin-bottom: 5px;">Privacy Policy<span>*</span></label>
+                                            <label for="privacy" style="font-size: 16px; margin-bottom: 5px;">Return & Cancellation Policy<span>*</span></label>
                                             {!! Form::textarea('privacy', null, array('class' => 'form-control')) !!}
                                             @if ($errors->has('privacy'))
                                              <span class="text-danger">{{$errors->first('privacy')}}</span>
@@ -60,7 +59,7 @@ bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
                                         </div>
                                     </div> 
                                    
-                                    <div class="col-md-12 mgn20">
+                         <!--            <div class="col-md-12 mgn20">
                                         <div class="form-group"> 
                                             <label for="terms_conditions" style="font-size: 16px; margin-bottom: 5px;">Refund & Return<span>*</span></label>
                                             {!! Form::textarea('refund_return', null, array('class' => 'form-control')) !!}
@@ -68,10 +67,10 @@ bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
                                              <span class="text-danger">{{$errors->first('refund_return')}}</span>
                                             @endif
                                         </div>
-                                    </div> 
+                                    </div>  -->
 
                                    
-                                    <div class="col-md-12 mgn20">
+                                  <!--   <div class="col-md-12 mgn20">
                                         <div class="form-group"> 
                                             <label for="contact" style="font-size: 16px; margin-bottom: 5px;">Contact Us<span>*</span></label>
                                             {!! Form::textarea('contact', null, array('class' => 'form-control')) !!}
@@ -79,7 +78,7 @@ bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
                                              <span class="text-danger">{{$errors->first('contact')}}</span>
                                             @endif
                                         </div>
-                                    </div>
+                                    </div> -->
                                     </div>
                                 <div class="row">
                                     <p>&nbsp;</p>

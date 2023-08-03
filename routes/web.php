@@ -542,6 +542,29 @@ Route::group(['middleware' => 'auth', 'after' => 'no-cache'], function () {
             Route::any('fedbacks/drop/{id?}', ['as' => 'fedbacks.drop',
                 'uses' => 'FedbackController@drop']);
             // Feedback route end
+
+
+            // Suppliers route start
+            Route::resource('suppliers','SupplierController', [
+                'names' => [
+                    'index'     => 'suppliers.index',
+                    'create'    => 'suppliers.create',
+                    'store'     => 'suppliers.store',
+                    'edit'      => 'suppliers.edit',
+                    'update'    => 'suppliers.update',
+                ],
+                'except' => ['show','destroy']
+            ]);
+            
+            Route::any('suppliers/paginate/{page?}', ['as' => 'suppliers.paginate',
+                'uses' => 'SupplierController@Paginate']);
+            Route::any('suppliers/action', ['as' => 'suppliers.action',
+                'uses' => 'SupplierController@Action']);
+            Route::any('suppliers/toggle/{id?}', ['as' => 'suppliers.toggle',
+                'uses' => 'SupplierController@Toggle']);
+            Route::any('suppliers/drop/{id?}', ['as' => 'suppliers.drop',
+                'uses' => 'SupplierController@drop']);
+            // Suppliers route end
             
 
             // Product route start
@@ -714,7 +737,9 @@ Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 //Route::get('/logout', array('as' => 'user-logout','uses' => 'Auth\AuthController@userLogout'));
 //Route::get('/email-verify/{id}', 'Frontend\UserController@emailVerify')->name('emailverify');
 
+Route::get('blogs', 'Frontend\HomeController@blogs_page')->name('blogs_page');
 Route::get('blogs/{url}', 'Frontend\HomeController@blogs_details')->name('blogs-details');
+Route::get('blog-category/{url}', 'Frontend\HomeController@blog_category')->name('blog-category');
 
 Route::get('getSortByCategory', 'Frontend\CategoryController@getSortByCategory')->name('getSortByCategory');
 Route::get('getSort', 'Frontend\CategoryController@getSort')->name('getSort');
